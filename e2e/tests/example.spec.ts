@@ -1,36 +1,22 @@
-import { test as base } from '@playwright/test';
-import { SharedApi } from '../src/sharedApi';
-import { OrdersApi } from '../e2e/api/ordersApi';
-import { ProjectApi } from '../e2e/api/projectApi';
-import { OrdersUi } from '../e2e/ui/ordersUi';
-import { PaymentsUi } from '../e2e/ui/paymentsUi';
+import { test } from '../../src/test';
 
-export const apiUiFixtures = base.extend<{
-  api: {
-    shared: SharedApi;
-    orders: OrdersApi;
-    project: ProjectApi;
-  };
-  ui: {
-    orders: OrdersUi;
-    payments: PaymentsUi;
-  };
-}>({
-  api: async ({ request }, use) => {
-    await use({
-      shared: new SharedApi(request),
-      orders: new OrdersApi(request),
-      project: new ProjectApi(request),
-    });
-  },
-  ui: async ({ page, api }, use) => {
-    await use({
-      orders: new OrdersUi({ page, api: api.orders }),
-      payments: new PaymentsUi({ page, api: api.project }),
-    });
-  },
+test.describe('Order tests', () => {
+  test.beforeEach(async ({ api }) => {
+    await api.project.createNewProject('New Project');
+  });
+
+  test('Complete order using UI and API', async ({ ui, api }) => {
+    await api.orders.createOrder('Sample Order');
+    await ui.orders.openOrder('Sample Order');
+    await ui.orders.completeOrder('Sample Order');
+    await ui.orders.assertOrderIsCompleted('Sample Order');
+  });
+
+  test('Add new payment method and verify transaction', async ({ ui, api }) => {
+    await ui.payments.clickAddNewPaymentButton();
+    await ui.payments.setUpPaymentMethod('creditcard');
+    await ui.payments.fillPaymentField('4111111111111111');
+    await ui.payments.submitPayment();
+    await api.payments.verifyPaymentMethod('creditcard');
+  });
 });
-
-
-export const test = apiUiFixtures;
-export { expect } from '@playwright/test';
