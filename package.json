@@ -1,0 +1,14 @@
+{
+  "name": "simple-and-effectife-e2e-test-architecture",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.45.2",
+    "@types/node": "^20.14.10"
+  }
+}
