@@ -2,6 +2,7 @@ import { test as base } from '@playwright/test';
 import { OrdersApi } from './api/ordersApi';
 import { ProjectApi } from './api/projectApi';
 import { PaymentsApi } from './api/paymentsApi';
+import { DatabricksApi } from './api/databricksApi';
 import { OrdersUi } from './ui/ordersUi';
 import { PaymentsUi } from './ui/paymentsUi';
 
@@ -10,6 +11,7 @@ export const apiUiFixtures = base.extend<{
     orders: OrdersApi;
     project: ProjectApi;
     payments: PaymentsApi;
+    databricks: DatabricksApi;
   };
   ui: {
     orders: OrdersUi;
@@ -21,6 +23,7 @@ export const apiUiFixtures = base.extend<{
       orders: new OrdersApi(request),
       project: new ProjectApi(request),
       payments: new PaymentsApi(request),
+      databricks: new DatabricksApi(request)
     });
   },
   ui: async ({ page }, use) => {
