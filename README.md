@@ -1,23 +1,16 @@
-# Simple and Effective E2E Test Architecture with Playwright and TypeScript
+# How to Integrate Databricks with Playwright and TypeScript via REST API
 
-This repository demonstrates a simple yet effective structure for E2E testing using Playwright and TypeScript.
+This repository demonstrates integrating Databricks with Playwright using REST API for E2E testing.
 
 ## Introduction
 
-This project showcases the architecture described in the article "Simple and Effective E2E Test Architecture with Playwright and TypeScript". The architecture aims to:
-- Facilitate faster setup and maintenance of tests by clear separation of components.
-- Improve code readability and scalability through the use of the Page Object Model (POM).
-- Reduce risks and increase test reliability by utilizing the Arrange-Act-Assert pattern and efficient locator selection.
+In modern test automation, the ability to seamlessly integrate different tools and technologies is crucial. This repository demonstrates how to effectively combine Databricks with Playwright and TypeScript using REST API. By leveraging this integration, you can automate complex data management tasks directly within your E2E tests, ensuring that your test environment is both flexible and robust. This approach not only simplifies the test setup but also enhances the reliability and scalability of your test suite, making it a powerful addition to your testing toolkit.
 
 For more detailed information, please refer to the [full article](https://www.linkedin.com/pulse/simple-effective-e2e-test-architecture-playwright-denis-skvortsov-hv5pf/).
 
 
 ## Key Concepts
 
-- **Feature Object**: Each Feature Object corresponds to a specific feature, simplifying the understanding of what each file is responsible for and reducing the risk of accidental changes.
-- **Separation of API and UI**: Storing API and UI methods separately to clearly demarcate responsibilities and reduce dependencies.
-- **Fixtures**: Easy integration of API and UI methods in tests, simplifying context switching.
-
-
-
-This repository is a practical implementation of the architecture described in the article. I hope it helps you in setting up and maintaining your E2E tests more efficiently.
+- **Automate Data Management**: Insert, update, and delete Databricks data directly within tests.
+- **Enhance Test Coverage**: Leverage REST API for accurate and reliable test data management.
+- **Improve Test Efficiency**: Streamline test setup and teardown with automated data handling.
